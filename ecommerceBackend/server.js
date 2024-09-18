@@ -4,10 +4,11 @@ import { server_configs } from './configs/server.config.js';
 import { db_config } from './configs/db.config.js';
 import { userModel } from './models/user.model.js';
 import bcrypt from 'bcryptjs'
+import { authRoute } from './routes/auth.route.js';
 const app = express();
 //creating admin user only if not present
 
-
+app.use(express.json())
 // connection with db
  mongoose.connect(db_config.DB_URL);
  const db = mongoose.connection;
@@ -22,6 +23,7 @@ const app = express();
     console.log("db connecttion established!");
     init();
  })
+authRoute(app);
 app.listen(server_configs.PORT,()=>{
     console.log("server started at PORT No:",server_configs.PORT);
 })
