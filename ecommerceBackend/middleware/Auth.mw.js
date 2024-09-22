@@ -32,3 +32,17 @@ export const VerifySignUpBody = async (req,res,next)=>{
         })
      }
 }
+export const VerifySignInBody = async (req,res,next)=>{
+     if(!req.body.userId){
+        return res.status(400).send({
+            message:"Userid required"
+        })
+     }
+     if(!req.body.password){
+        return res.status(400).send({
+            message:"password required"
+        })
+     }
+
+     next();
+}
