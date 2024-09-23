@@ -5,6 +5,7 @@ import { db_config } from './configs/db.config.js';
 import { userModel } from './models/user.model.js';
 import bcrypt from 'bcryptjs'
 import { authRoute } from './routes/auth.route.js';
+import { CategoryRoute } from './routes/category.routes.js';
 const app = express();
 //creating admin user only if not present
 
@@ -24,6 +25,7 @@ app.use(express.json())
     init();
  })
 authRoute(app);
+CategoryRoute(app);
 app.listen(server_configs.PORT,()=>{
     console.log("server started at PORT No:",server_configs.PORT);
 })

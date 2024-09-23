@@ -32,6 +32,8 @@ export const AuthControllersignUp = async(req,res)=>{
 export const AuthControllersignIn = async (req,res)=>{
        //login the user
        const request_body = req.body;
+       console.log(request_body);
+       
        try{
         const user = await userModel.findOne({
             userId:request_body.userId,
